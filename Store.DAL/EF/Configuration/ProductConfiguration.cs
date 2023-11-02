@@ -1,6 +1,6 @@
-﻿using Store.DAL.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Store.DAL.Entity;
 
 namespace Store.DAL.EF.Configuration
 {

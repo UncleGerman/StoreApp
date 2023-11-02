@@ -1,8 +1,8 @@
-﻿using Store.DAL.Models.Base;
+﻿using Store.DAL.Entity.Base;
 
-namespace Store.DAL.Models
+namespace Store.DAL.Entity
 {
-    public interface IProduct : IBaseEntity
+    public sealed class Product : BaseEntity, IProduct
     {
         public string Description { get; set; }
 

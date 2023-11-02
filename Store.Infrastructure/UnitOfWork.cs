@@ -2,23 +2,24 @@
 using Store.DAL.Repositories;
 using Store.Infrastructure.Repositories.Factory;
 using Microsoft.EntityFrameworkCore;
+using Store.DAL.EF;
 
 namespace Store.Infrastructure
 {
-    internal sealed class UnitOfWork : IUnitOfWork
+    public sealed class UnitOfWork : IUnitOfWork
     {
         public UnitOfWork(
-            DbContext dbContext,
+            StoreContext storeContext,
             IRepositoryFactory repositoryFactory)
         {
-            _dbContext = dbContext 
-                ?? throw new ArgumentNullException(nameof(dbContext));
+            _storeContext = storeContext
+                ?? throw new ArgumentNullException(nameof(storeContext));
 
             _repositoryFactory = repositoryFactory 
                 ?? throw new ArgumentNullException(nameof(repositoryFactory));
         }
 
-        private readonly DbContext _dbContext;
+        private readonly StoreContext _storeContext;
 
         private readonly IRepositoryFactory _repositoryFactory;
 
@@ -45,12 +46,12 @@ namespace Store.Infrastructure
 
         public void Save()
         {
-            _dbContext.SaveChanges();
+            _storeContext.SaveChanges();
         }
 
         public async void SaveAcync()
         {
-            await _dbContext.SaveChangesAsync();
+            await _storeContext.SaveChangesAsync();
         }
 
         #endregion

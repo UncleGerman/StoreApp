@@ -1,6 +1,6 @@
-﻿using Store.DAL.Models.Base;
+﻿using Store.DAL.Entity.Base;
 
-namespace Store.DAL.Models
+namespace Store.DAL.Entity
 {
     public sealed class Category : BaseEntity, ICategory
     {

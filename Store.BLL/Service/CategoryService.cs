@@ -2,11 +2,11 @@
 using Store.BLL.Entity;
 using Store.DAL;
 using Store.DAL.Repositories;
-using Store.DAL.Models;
+using Store.DAL.Entity;
 
 namespace Store.BLL.Service
 {
-    internal sealed class CategoryService : ICategoryService
+    public sealed class CategoryService : ICategoryService
     {
         public CategoryService(
             IUnitOfWork unitOfWork,

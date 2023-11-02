@@ -1,4 +1,4 @@
-﻿using Store.DAL.Models.Base;
+﻿using Store.DAL.Entity.Base;
 
 namespace Store.BLL.Entity
 {

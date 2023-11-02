@@ -1,6 +1,6 @@
-﻿using Store.DAL.Models;
-using System.Reflection;
+﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Store.DAL.Entity;
 
 namespace Store.DAL.EF
 {
@@ -8,7 +8,7 @@ namespace Store.DAL.EF
     {
         public StoreContext(DbContextOptions options) : base(options)
         {
-
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

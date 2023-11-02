@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Store.BLL.Entity;
-using Store.DAL.Models;
+using Store.DAL.Entity;
 
 namespace Store.Infrastructure.AutoMapper
 {

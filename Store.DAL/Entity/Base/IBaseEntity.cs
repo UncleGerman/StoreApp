@@ -1,4 +1,4 @@
-﻿namespace Store.DAL.Models.Base
+﻿namespace Store.DAL.Entity.Base
 {
     public interface IBaseEntity
     {

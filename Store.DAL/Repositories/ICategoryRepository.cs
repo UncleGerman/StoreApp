@@ -1,17 +1,17 @@
-﻿using Store.DAL.Models;
+﻿using Store.DAL.Entity;
 
 namespace Store.DAL.Repositories
 {
     public interface ICategoryRepository
     {
-        public void Insert(ICategory category);
+        public void Insert(Category category);
 
-        public void Remove(ICategory category);
+        public void Remove(Category category);
 
-        public void Update(ICategory category);
+        public void Update(Category category);
 
-        public ICategory GetById(int id);
+        public Category GetById(int id);
 
-        public IEnumerable<ICategory> GetAll();
+        public IEnumerable<Category> GetAll();
     }
 }

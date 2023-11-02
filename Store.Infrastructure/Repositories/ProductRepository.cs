@@ -1,44 +1,44 @@
-﻿using Store.DAL.Models;
-using Store.DAL.Repositories;
+﻿using Store.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Store.DAL.Entity;
 
 namespace Store.Infrastructure.Repositories
 {
-    internal sealed class ProductRepository : IProductRepository
+    public sealed class ProductRepository : IProductRepository
     {
-        internal ProductRepository(DbSet<IProduct> products)
+        public ProductRepository(DbSet<Product> products)
         {
             _products = products
                 ?? throw new ArgumentNullException(nameof(products));
         }
 
-        private readonly DbSet<IProduct> _products;
+        private readonly DbSet<Product> _products;
 
-        public void Insert(IProduct product)
+        public void Insert(Product product)
         {
             _products.Add(product);
         }
 
-        public void Remove(IProduct product)
+        public void Remove(Product product)
         {
             _products.Remove(product);
         }
 
-        public void Update(IProduct product)
+        public void Update(Product product)
         {
             _products.Update(product);
         }
 
         #region GetEntity
 
-        public IProduct GetById(int id)
+        public Product GetById(int id)
         {
             var product = _products.FirstOrDefault(p => p.Id == id);
 
             return product;
         }
 
-        public IEnumerable<IProduct> GetAll()
+        public IEnumerable<Product> GetAll()
         {
             return _products.ToList();
         }

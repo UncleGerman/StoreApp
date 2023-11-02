@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Store.BLL.Entity;
 using Store.DAL;
-using Store.DAL.Models;
+using Store.DAL.Entity;
 using Store.DAL.Repositories;
 
 namespace Store.BLL.Service

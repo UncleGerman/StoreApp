@@ -1,17 +1,17 @@
-﻿using Store.DAL.Models;
+﻿using Store.DAL.Entity;
 
 namespace Store.DAL.Repositories
 {
     public interface IProductRepository
     {
-        public void Insert(IProduct product);
+        public void Insert(Product product);
 
-        public void Remove(IProduct product);
+        public void Remove(Product product);
 
-        public void Update(IProduct product);
+        public void Update(Product product);
 
-        public IProduct GetById(int id);
+        public Product GetById(int id);
 
-        public IEnumerable<IProduct> GetAll();
+        public IEnumerable<Product> GetAll();
     }
 }
