@@ -1,6 +1,6 @@
-﻿using Store.DAL.EF;
-using Store.DAL.Entity;
+﻿using Store.DAL.Entity;
 using Store.DAL.Repositories;
+using Store.DAL.EntityFramework;
 
 namespace Store.Infrastructure.Repositories.Factory
 {
@@ -8,7 +8,7 @@ namespace Store.Infrastructure.Repositories.Factory
     {
         public RepositoryFactory(StoreContext storeContext)
         {
-            _storeContext = storeContext 
+            _storeContext = storeContext
                 ?? throw new ArgumentNullException(nameof(storeContext));
         }
 
@@ -22,6 +22,11 @@ namespace Store.Infrastructure.Repositories.Factory
         public IProductRepository GetProductRepository()
         {
             return new ProductRepository(_storeContext.Set<Product>());
+        }
+
+        public IOrderRepository GetOrderRepository()
+        {
+            return new OrderRepository(_storeContext.Set<Order>());
         }
     }
 }

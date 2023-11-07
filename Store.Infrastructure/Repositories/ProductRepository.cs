@@ -1,10 +1,10 @@
-﻿using Store.DAL.Repositories;
+﻿using Store.DAL.Entity;
+using Store.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Store.DAL.Entity;
 
 namespace Store.Infrastructure.Repositories
 {
-    public sealed class ProductRepository : IProductRepository
+    internal sealed class ProductRepository : IProductRepository
     {
         public ProductRepository(DbSet<Product> products)
         {
@@ -19,26 +19,31 @@ namespace Store.Infrastructure.Repositories
             _products.Add(product);
         }
 
-        public void Remove(Product product)
-        {
-            _products.Remove(product);
-        }
-
         public void Update(Product product)
         {
             _products.Update(product);
         }
 
+        public void Remove(Product product)
+        {
+            _products.Remove(product);
+        }
+
         #region GetEntity
 
-        public Product GetById(int id)
+        public Product? GetById(int id)
         {
             var product = _products.FirstOrDefault(p => p.Id == id);
 
             return product;
         }
 
-        public IEnumerable<Product> GetAll()
+        public int GetCount()
+        {
+            return _products.Count();
+        }
+
+        public IReadOnlyCollection<Product> GetAll()
         {
             return _products.ToList();
         }

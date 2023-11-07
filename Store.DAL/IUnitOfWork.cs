@@ -2,11 +2,13 @@
 
 namespace Store.DAL
 {
-    public interface IUnitOfWork : IDisposable
+    internal interface IUnitOfWork : IDisposable
     {
         public IProductRepository GetProductRepository();
 
         public ICategoryRepository GetCategoryRepository();
+
+        public IOrderRepository GetOrderRepository();
 
         public void Save();
 

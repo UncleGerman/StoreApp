@@ -2,8 +2,13 @@
 
 namespace Store.DAL.Entity
 {
-    public sealed class Category : BaseEntity, ICategory
+    public sealed class Category : BaseEntity
     {
-        public IEnumerable<IProduct> Products { get; set; }
+        public Category()
+        {
+            Products = new List<Product>();
+        }
+
+        public IEnumerable<Product> Products { get; set; }
     }
 }

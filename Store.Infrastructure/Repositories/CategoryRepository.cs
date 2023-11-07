@@ -1,10 +1,10 @@
-﻿using Store.DAL.Repositories;
+﻿using Store.DAL.Entity;
+using Store.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Store.DAL.Entity;
 
 namespace Store.Infrastructure.Repositories
 {
-    public sealed class CategoryRepository : ICategoryRepository
+    internal sealed class CategoryRepository : ICategoryRepository
     {
         public CategoryRepository(DbSet<Category> categories)
         {
@@ -19,19 +19,19 @@ namespace Store.Infrastructure.Repositories
             _categories.Add(category);
         }
 
-        public void Remove(Category category)
-        {
-            _categories.Remove(category);
-        }
-
         public void Update(Category category)
         {
             _categories.Update(category);
         }
 
+        public void Remove(Category category)
+        {
+            _categories.Remove(category);
+        }
+
         #region GetEntity
 
-        public Category GetById(int id)
+        public Category? GetById(int id)
         {
             var category = _categories.FirstOrDefault(c => c.Id == id);
 

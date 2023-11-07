@@ -1,10 +1,10 @@
 ﻿using Store.DAL.Entity.Base;
 
-namespace Store.BLL.Entity
+namespace Store.BLL.Entity.Interfaces
 {
     public interface IProductDTO : IBaseEntity
     {
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public int Count { get; set; }
 

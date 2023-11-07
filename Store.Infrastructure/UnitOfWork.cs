@@ -1,12 +1,11 @@
 ﻿using Store.DAL;
+using Store.DAL.EntityFramework;
 using Store.DAL.Repositories;
 using Store.Infrastructure.Repositories.Factory;
-using Microsoft.EntityFrameworkCore;
-using Store.DAL.EF;
 
 namespace Store.Infrastructure
 {
-    public sealed class UnitOfWork : IUnitOfWork
+    internal sealed class UnitOfWork : IUnitOfWork
     {
         public UnitOfWork(
             StoreContext storeContext,
@@ -23,9 +22,31 @@ namespace Store.Infrastructure
 
         private readonly IRepositoryFactory _repositoryFactory;
 
+        private bool _disposed = false;
+
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        public void Dispose(bool disposing)
+        {
+            if (_disposed == true)
+            {
+                
+            }
+            else
+            {
+                if (disposing == true)
+                {
+                    _storeContext.Dispose();
+                }
+                else
+                {
+                    _disposed = true;
+                }
+            }
         }
 
         #region GetRepository
@@ -38,6 +59,11 @@ namespace Store.Infrastructure
         public IProductRepository GetProductRepository()
         {
             return _repositoryFactory.GetProductRepository();
+        }
+
+        public IOrderRepository GetOrderRepository()
+        {
+            return _repositoryFactory.GetOrderRepository();
         }
 
         #endregion

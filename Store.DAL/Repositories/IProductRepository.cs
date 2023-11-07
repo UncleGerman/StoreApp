@@ -2,16 +2,18 @@
 
 namespace Store.DAL.Repositories
 {
-    public interface IProductRepository
+    internal interface IProductRepository
     {
         public void Insert(Product product);
 
-        public void Remove(Product product);
-
         public void Update(Product product);
 
-        public Product GetById(int id);
+        public void Remove(Product product);
 
-        public IEnumerable<Product> GetAll();
+        public Product? GetById(int id);
+
+        public int GetCount();
+
+        public IReadOnlyCollection<Product> GetAll();
     }
 }

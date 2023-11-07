@@ -1,17 +1,17 @@
-﻿using Store.BLL.Entity;
+﻿using Store.BLL.Entity.Interfaces;
 
-namespace Store.BLL.Service
+namespace Store.BLL.Service.Interfaces
 {
     public interface IProductService
     {
         public void Insert(IProductDTO productDTO);
 
-        public void Remove(IProductDTO productDTO);
-
         public void Update(IProductDTO productDTO);
+
+        public void Remove(int id);
 
         public IProductDTO GetById(int id);
 
-        public IEnumerable<IProductDTO> GetAll();
+        public IReadOnlyCollection<IProductDTO> GetAll();
     }
 }

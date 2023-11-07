@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Store.BLL.Entity;
-using Store.BLL.Service;
+using Store.BLL.Entity.Interfaces;
+using Store.BLL.Service.Interfaces;
 
 namespace Store.Web.Controllers
 {
+    [ApiController]
+    [Route("api/products")]
     public sealed class ProductController : Controller
     {
         public ProductController(IProductService productService)
@@ -14,14 +16,40 @@ namespace Store.Web.Controllers
 
         private readonly IProductService _productService;
 
-        public void Insert(ProductDTO product)
+        public IActionResult Index()
+        {
+            return View("products");
+        }
+
+        [HttpPost]
+        public void Insert(IProductDTO product)
         {
             _productService.Insert(product);
         }
 
-        public IActionResult Index()
+        [HttpPut]
+        public void Update(IProductDTO product)
         {
-            return View();
+            _productService.Update(product);
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            _productService.Remove(id);
+        }
+
+        [HttpGet("{id}")]
+
+        public IProductDTO Get(int id)
+        {
+            return _productService.GetById(id);
+        }
+
+        [HttpGet]
+        public IEnumerable<IProductDTO> GetAll()
+        {
+            return _productService.GetAll();
         }
     }
 }

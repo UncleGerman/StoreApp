@@ -2,24 +2,22 @@ using Store.Infrastructure.Injections;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors();
-builder.Services.AddMvc();
-
-var connection = builder.Configuration.GetConnectionString("DefaultConnection");
-
-
-builder.Services.AddDbContext(connection);
+builder.Services.AddDbContext(builder.Configuration);
 builder.Services.AddDAL();
 builder.Services.AddInfrastructure();
 builder.Services.AddBLL();
 
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.UseExceptionHandler("/Error");
 
-app.UseDefaultFiles();
-app.UseStaticFiles();
+app.UseRouting();
 
-app.UseCors(builder => builder.WithOrigins("http://localhost:4200"));
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

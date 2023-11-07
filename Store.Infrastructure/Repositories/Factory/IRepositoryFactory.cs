@@ -2,10 +2,12 @@
 
 namespace Store.Infrastructure.Repositories.Factory
 {
-    public interface IRepositoryFactory
+    internal interface IRepositoryFactory
     {
         public IProductRepository GetProductRepository();
 
         public ICategoryRepository GetCategoryRepository();
+
+        public IOrderRepository GetOrderRepository();
     }
 }
